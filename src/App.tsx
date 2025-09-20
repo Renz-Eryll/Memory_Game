@@ -26,7 +26,6 @@ const App: React.FC = () => {
         <BestScore difficulty={gameState.difficulty.name} />
         <GameBoard />
         {gameState.isGameComplete && <GameComplete />}{" "}
-        {/* Conditionally render */}
       </main>
     </div>
   );
