@@ -5,7 +5,7 @@ import { FLIP_DELAY } from "@utils/constants";
 import { useLocalStorage } from "@hooks/useLocalStorage";
 import { useTimer } from "@hooks/useTimer";
 
-export const useGameState = () => {
+export const useGameStateLogic = () => {
   const [gameState, setGameState] = useState<GameState>({
     cards: [],
     flippedCards: [],
@@ -106,22 +106,25 @@ export const useGameState = () => {
             if (isGameComplete) {
               stopTimer();
 
-              // Update best score
-              const newBestScore = {
-                moves: prev.moves + 1,
-                time: seconds,
-                difficulty: prev.difficulty.name,
-                date: new Date().toLocaleDateString(),
-              };
+              // Update best score after a short delay to get the final time
+              setTimeout(() => {
+                const finalTime = seconds + 1; // Account for final second
+                const newBestScore = {
+                  moves: prev.moves + 1,
+                  time: finalTime,
+                  difficulty: prev.difficulty.name,
+                  date: new Date().toLocaleDateString(),
+                };
 
-              if (
-                !bestScore ||
-                newBestScore.moves < bestScore.moves ||
-                (newBestScore.moves === bestScore.moves &&
-                  newBestScore.time < bestScore.time)
-              ) {
-                setBestScore(newBestScore);
-              }
+                if (
+                  !bestScore ||
+                  newBestScore.moves < bestScore.moves ||
+                  (newBestScore.moves === bestScore.moves &&
+                    newBestScore.time < bestScore.time)
+                ) {
+                  setBestScore(newBestScore);
+                }
+              }, 100);
             }
 
             return {
@@ -185,5 +188,14 @@ export const useGameState = () => {
     };
   }, []);
 
-  return { gameState, flipCard, resetGame, setDifficulty };
+  return {
+    gameState,
+    flipCard,
+    resetGame,
+    setDifficulty,
+    seconds,
+    startTimer,
+    stopTimer,
+    resetTimer,
+  };
 };

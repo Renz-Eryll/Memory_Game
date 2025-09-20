@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./App.module.scss";
-import { useGameState } from "@/hooks";
+import { useGameContext } from "@/contexts";
 import {
   BestScore,
   DifficultySelector,
@@ -9,7 +9,7 @@ import {
 } from "@/components";
 
 const App: React.FC = () => {
-  const { gameState, setDifficulty, resetGame } = useGameState();
+  const { gameState, setDifficulty, resetGame } = useGameContext();
 
   return (
     <div className={styles.app}>

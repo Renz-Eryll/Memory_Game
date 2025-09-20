@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { Card as CardType } from "@/types";
-import { useGameState } from "@hooks/useGameState";
+import { useGameContext } from "@/contexts";
 import styles from "./Card.module.scss";
 
 interface CardProps {
@@ -9,7 +9,7 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ card, index }) => {
-  const { flipCard } = useGameState();
+  const { flipCard } = useGameContext();
 
   const handleClick = useCallback(() => {
     if (!card.isFlipped && !card.isMatched) {

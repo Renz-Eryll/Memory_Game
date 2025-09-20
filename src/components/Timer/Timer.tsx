@@ -1,9 +1,9 @@
 import React from "react";
-import { useTimer } from "@hooks/useTimer";
+import { useGameContext } from "@/contexts";
 import styles from "./Timer.module.scss";
 
 const Timer: React.FC = () => {
-  const { seconds } = useTimer();
+  const { seconds } = useGameContext();
 
   const formatTime = (secs: number) => {
     const minutes = Math.floor(secs / 60);

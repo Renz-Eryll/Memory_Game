@@ -1,9 +1,9 @@
 import React from "react";
-import { useGameState } from "@hooks/useGameState";
+import { useGameContext } from "@/contexts";
 import styles from "./MoveCounter.module.scss";
 
 const MoveCounter: React.FC = () => {
-  const { gameState } = useGameState();
+  const { gameState } = useGameContext();
 
   return (
     <div className={styles.counter} aria-live="polite">

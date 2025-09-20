@@ -1,10 +1,10 @@
 import React from "react";
-import { useGameState } from "@hooks/useGameState";
+import { useGameContext } from "@/contexts";
 import styles from "./GameBoard.module.scss";
 import Card from "../Card/Card";
 
 const GameBoard: React.FC = () => {
-  const { gameState } = useGameState();
+  const { gameState } = useGameContext();
 
   return (
     <div
