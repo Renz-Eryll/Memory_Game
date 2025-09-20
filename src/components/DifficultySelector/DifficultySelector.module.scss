@@ -1,0 +1,26 @@
+@import "@styles/variables";
+
+.selector {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+
+  label {
+    font-size: $font-size-md;
+    color: $text-color;
+  }
+
+  select {
+    padding: $spacing-xs;
+    border-radius: $border-radius;
+    border: 1px solid $secondary-color;
+    background-color: $background-color;
+    color: $text-color;
+    font-size: $font-size-md;
+    cursor: pointer;
+
+    &:focus {
+      outline: 2px solid $focus-color;
+    }
+  }
+}

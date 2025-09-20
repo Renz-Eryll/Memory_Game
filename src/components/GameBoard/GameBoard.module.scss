@@ -1,0 +1,16 @@
+@import "@styles/variables";
+
+.board {
+  display: grid;
+  gap: $spacing-sm;
+  max-width: 100%;
+  padding: $spacing-md;
+  background-color: $secondary-color;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+
+  @include respond-to(mobile) {
+    gap: $spacing-xs;
+    padding: $spacing-sm;
+  }
+}

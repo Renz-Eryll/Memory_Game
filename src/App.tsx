@@ -1,0 +1,32 @@
+import React from "react";
+import styles from "./App.module.scss";
+import { useGameState } from "@/hooks";
+import {
+  BestScore,
+  DifficultySelector,
+  GameBoard,
+  GameControls,
+} from "@/components";
+
+const App: React.FC = () => {
+  const { gameState, setDifficulty, resetGame } = useGameState();
+
+  return (
+    <div className={styles.app}>
+      <header className={styles.header}>
+        <h1>Memory Game</h1>
+      </header>
+      <main className={styles.main}>
+        <DifficultySelector
+          currentDifficulty={gameState.difficulty}
+          setDifficulty={setDifficulty}
+        />
+        <GameControls resetGame={resetGame} />
+        <BestScore difficulty={gameState.difficulty.name} />
+        <GameBoard />
+      </main>
+    </div>
+  );
+};
+
+export default App;

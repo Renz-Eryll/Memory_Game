@@ -1,0 +1,33 @@
+@import "@styles/variables";
+
+.controls {
+  display: flex;
+  gap: $spacing-md;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  @include respond-to(mobile) {
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+}
+
+.resetButton {
+  padding: $spacing-sm $spacing-md;
+  background-color: $primary-color;
+  color: $text-color;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  font-size: $font-size-md;
+  transition: background-color $animation-duration;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+
+  &:focus {
+    outline: 2px solid $focus-color;
+  }
+}
