@@ -4,4 +4,8 @@
   font-size: $font-size-md;
   color: $text-color;
   text-align: center;
+  background-color: $secondary-color;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
 }

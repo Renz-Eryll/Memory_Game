@@ -2,11 +2,11 @@
 
 .controls {
   display: flex;
-  gap: $spacing-lg; // Increased gap for better spacing
+  gap: $spacing-lg;
   align-items: center;
-  justify-content: center; // Center controls for cleaner look
+  justify-content: center;
   flex-wrap: wrap;
-  background-color: $card-front; // Background for cohesion
+  background-color: $secondary-color;
   padding: $spacing-sm;
   border-radius: $border-radius;
   box-shadow: $box-shadow;
@@ -19,19 +19,21 @@
 }
 
 .resetButton {
-  padding: $spacing-sm $spacing-lg; // Larger button for better clickability
+  padding: $spacing-sm $spacing-lg;
   background-color: $primary-color;
-  color: $text-color;
+  color: #ffffff;
   border: none;
   border-radius: $border-radius;
   cursor: pointer;
   font-size: $font-size-md;
-  font-weight: bold; // Bolder text for emphasis
-  transition: background-color $animation-duration, transform 0.2s;
+  font-weight: bold;
+  transition: background-color $animation-duration, transform 0.2s,
+    box-shadow 0.3s;
 
   &:hover {
     background-color: darken($primary-color, 10%);
-    transform: translateY(-2px); // Subtle lift effect
+    transform: translateY(-2px);
+    box-shadow: 0 0 12px rgba($primary-color, 0.5);
   }
 
   &:focus {

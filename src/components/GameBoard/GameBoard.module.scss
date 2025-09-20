@@ -8,11 +8,11 @@
   background: linear-gradient(
     135deg,
     $secondary-color 0%,
-    lighten($secondary-color, 5%) 100%
-  ); // Subtle gradient
+    darken($secondary-color, 5%) 100%
+  );
   border-radius: $border-radius;
-  box-shadow: $box-shadow;
-  transition: transform 0.2s ease; // Smooth scaling on interaction
+  box-shadow: 0 0 12px rgba($primary-color, 0.3);
+  transition: transform 0.2s ease;
 
   @include respond-to(mobile) {
     gap: $spacing-xs;
@@ -20,6 +20,6 @@
   }
 
   &:hover {
-    transform: scale(1.01); // Subtle hover effect
+    transform: scale(1.01);
   }
 }
