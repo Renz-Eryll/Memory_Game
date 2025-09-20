@@ -4,23 +4,35 @@
   display: flex;
   align-items: center;
   gap: $spacing-sm;
+  background-color: $card-front; // Consistent background
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
 
   label {
     font-size: $font-size-md;
     color: $text-color;
+    font-weight: bold;
   }
 
   select {
-    padding: $spacing-xs;
+    padding: $spacing-xs $spacing-sm;
     border-radius: $border-radius;
     border: 1px solid $secondary-color;
-    background-color: $background-color;
+    background-color: lighten($background-color, 5%);
     color: $text-color;
     font-size: $font-size-md;
     cursor: pointer;
+    transition: border-color $animation-duration, box-shadow $animation-duration;
+
+    &:hover {
+      border-color: $primary-color;
+    }
 
     &:focus {
-      outline: 2px solid $focus-color;
+      outline: none;
+      border-color: $focus-color;
+      box-shadow: 0 0 4px rgba($focus-color, 0.5);
     }
   }
 }

@@ -31,7 +31,7 @@ const Card: React.FC<CardProps> = ({ card, index }) => {
     <div
       className={`${styles.card} ${
         card.isFlipped || card.isMatched ? styles.flipped : ""
-      }`}
+      } ${card.isMatched ? styles.matched : ""}`}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       tabIndex={0}

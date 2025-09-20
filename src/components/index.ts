@@ -5,3 +5,4 @@ export { default as DifficultySelector } from "./DifficultySelector/DifficultySe
 export { default as BestScore } from "./BestScore/BestScore";
 export { default as Timer } from "./Timer/Timer";
 export { default as MoveCounter } from "./MoveCounter/MoveCounter";
+export { default as GameComplete } from "./GameComplete/GameComplete";

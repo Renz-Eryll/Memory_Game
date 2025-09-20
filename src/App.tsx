@@ -6,6 +6,7 @@ import {
   DifficultySelector,
   GameBoard,
   GameControls,
+  GameComplete,
 } from "@/components";
 
 const App: React.FC = () => {
@@ -24,6 +25,8 @@ const App: React.FC = () => {
         <GameControls resetGame={resetGame} />
         <BestScore difficulty={gameState.difficulty.name} />
         <GameBoard />
+        {gameState.isGameComplete && <GameComplete />}{" "}
+        {/* Conditionally render */}
       </main>
     </div>
   );
