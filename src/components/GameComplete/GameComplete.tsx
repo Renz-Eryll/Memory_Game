@@ -14,7 +14,7 @@ const GameComplete: React.FC = () => {
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
-        <h2>Congratulations!</h2>
+        <h2>🎉 Congratulations!</h2>
         <p>
           You completed the {gameState.difficulty.name.toLowerCase()} level in{" "}
           {gameState.moves} moves and {formatTime(seconds)}.

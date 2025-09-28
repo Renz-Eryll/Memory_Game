@@ -1,43 +1,58 @@
 @import "@styles/variables";
+@import "@styles/mixins";
 
 .controls {
   display: flex;
-  gap: $spacing-lg;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
   flex-wrap: wrap;
-  background-color: $secondary-color;
-  padding: $spacing-sm;
-  border-radius: $border-radius;
-  box-shadow: $box-shadow;
+  gap: $spacing-md;
+  background: $glass-bg-medium;
+  backdrop-filter: $backdrop-blur;
+  border: 1px solid $border-medium;
+  border-radius: $border-radius-md;
+  padding: $spacing-lg $spacing-xl;
+  max-width: min(90vw, 800px); // Match original game board width
+  width: 100%; // Take full available width up to max-width
+  margin: 0 auto; // Center the controls
+  box-sizing: border-box; // Ensure padding doesn't affect width
 
-  @include respond-to(mobile) {
+  @include respond-to(small) {
     flex-direction: column;
     gap: $spacing-md;
-    padding: $spacing-xs;
+    padding: $spacing-md;
+    max-width: 90vw; // Ensure controls don't exceed viewport width
+  }
+}
+
+.stats {
+  display: flex;
+  gap: $spacing-xl;
+
+  @include respond-to(small) {
+    flex-direction: column;
+    gap: $spacing-md;
   }
 }
 
 .resetButton {
-  padding: $spacing-sm $spacing-lg;
-  background-color: $primary-color;
-  color: #ffffff;
-  border: none;
+  background: $glass-bg-medium;
+  border: 1px solid $border-strong;
   border-radius: $border-radius;
+  padding: $spacing-sm $spacing-lg;
+  color: $text-color;
+  font-size: $font-size-sm;
+  font-weight: 600;
   cursor: pointer;
-  font-size: $font-size-md;
-  font-weight: bold;
-  transition: background-color $animation-duration, transform 0.2s,
-    box-shadow 0.3s;
+  transition: all $animation-duration ease;
 
   &:hover {
-    background-color: darken($primary-color, 10%);
-    transform: translateY(-2px);
-    box-shadow: 0 0 12px rgba($primary-color, 0.5);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: $border-hover;
+    transform: translateY(-1px);
   }
 
-  &:focus {
-    outline: 2px solid $focus-color;
-    outline-offset: 2px;
+  &:active {
+    transform: translateY(0);
   }
 }

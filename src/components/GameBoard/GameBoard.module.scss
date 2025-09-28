@@ -1,25 +1,49 @@
 @import "@styles/variables";
+@import "@styles/mixins";
 
 .board {
-  display: grid;
-  gap: $spacing-sm;
-  max-width: 100%;
-  padding: $spacing-md;
-  background: linear-gradient(
-    135deg,
-    $secondary-color 0%,
-    darken($secondary-color, 5%) 100%
-  );
-  border-radius: $border-radius;
-  box-shadow: 0 0 12px rgba($primary-color, 0.3);
-  transition: transform 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $spacing-xl;
+  background: $glass-bg-light;
+  border: 1px solid $border-light;
+  border-radius: $border-radius-lg;
+  backdrop-filter: $backdrop-blur;
+  box-shadow: 0 8px 32px $shadow-dark;
+  max-width: min(90vw, 800px);
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  min-height: 400px;
+  overflow: hidden;
 
-  @include respond-to(mobile) {
-    gap: $spacing-xs;
-    padding: $spacing-sm;
+  @include respond-to(small) {
+    padding: $spacing-md;
+    min-height: 300px;
   }
 
-  &:hover {
-    transform: scale(1.01);
+  @include respond-to(extra-small) {
+    padding: $spacing-sm;
+    min-height: 250px;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: var(--gap, $spacing-sm);
+  width: var(--grid-width, fit-content);
+  max-width: 100%;
+  justify-self: center;
+  align-self: center;
+  grid-template-columns: var(--grid-columns);
+  grid-template-rows: var(--grid-rows);
+
+  @include respond-to(small) {
+    gap: var(--gap, $spacing-xs);
+  }
+
+  @include respond-to(extra-small) {
+    gap: var(--gap, $spacing-xxs);
   }
 }

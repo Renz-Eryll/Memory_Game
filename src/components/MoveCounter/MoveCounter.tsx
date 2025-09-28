@@ -7,7 +7,8 @@ const MoveCounter: React.FC = () => {
 
   return (
     <div className={styles.counter} aria-live="polite">
-      Moves: {gameState.moves}
+      <span className={styles.statLabel}>Moves</span>
+      <span className={styles.statValue}>{gameState.moves}</span>
     </div>
   );
 };

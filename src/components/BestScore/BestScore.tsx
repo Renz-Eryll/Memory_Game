@@ -17,8 +17,10 @@ const BestScore: React.FC<BestScoreProps> = ({ difficulty }) => {
 
   return (
     <div className={styles.bestScore} aria-live="polite">
-      Best Score: {bestScore.moves} moves in {bestScore.time}s ({bestScore.date}
-      )
+      <span className={styles.statLabel}>Best Score</span>
+      <span className={styles.statValue}>
+        {bestScore.moves} moves / {bestScore.time}s
+      </span>
     </div>
   );
 };

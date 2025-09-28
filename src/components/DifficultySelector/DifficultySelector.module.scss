@@ -1,39 +1,47 @@
 @import "@styles/variables";
+@import "@styles/mixins";
+
+.container {
+  max-width: min(90vw, 800px);
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+
+  @include respond-to(small) {
+    max-width: 90vw;
+  }
+}
 
 .selector {
   display: flex;
   align-items: center;
   gap: $spacing-sm;
-  background-color: $secondary-color;
-  padding: $spacing-xs $spacing-sm;
+}
+
+.label {
+  font-size: $font-size-xs;
+  color: $stat-label-color;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.select {
+  background: $glass-bg-dark;
+  border: 1px solid $border-strong;
   border-radius: $border-radius;
-  box-shadow: $box-shadow;
+  padding: $spacing-xs $spacing-sm;
+  color: $text-color;
+  font-size: $font-size-sm;
+  cursor: pointer;
+  transition: all $animation-duration ease;
 
-  label {
-    font-size: $font-size-md;
-    color: $text-color;
-    font-weight: bold;
-  }
-
-  select {
-    padding: $spacing-xs $spacing-sm;
-    border-radius: $border-radius;
-    border: 1px solid $primary-color;
-    background-color: darken($background-color, 5%);
-    color: $text-color;
-    font-size: $font-size-md;
-    cursor: pointer;
-    transition: border-color $animation-duration, box-shadow $animation-duration;
-
-    &:hover {
-      border-color: lighten($primary-color, 10%);
-      box-shadow: 0 0 8px rgba($primary-color, 0.3);
-    }
-
-    &:focus {
-      outline: none;
-      border-color: $focus-color;
-      box-shadow: 0 0 8px rgba($focus-color, 0.5);
-    }
+  &:hover,
+  &:focus {
+    border-color: $border-focus;
+    background: rgba(0, 0, 0, 0.5);
+    outline: none;
   }
 }

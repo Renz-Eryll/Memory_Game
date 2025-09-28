@@ -1,23 +1,46 @@
-$primary-color: #00d4ff;
+$primary-color: #ffffff;
 $secondary-color: #2a2a2a;
 $background-color: #1a1a1a;
-$card-back: #2a2a2a;
-$card-front: #ffffff;
-$text-color: #e0e0e0;
-$focus-color: #40c4ff;
+$card-front: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+$card-back: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+$text-color: #ffffff;
+$dark-text: #2a2a2a;
+$muted-text: rgba(255, 255, 255, 0.8);
+$stat-label-color: rgba(255, 255, 255, 0.7);
+$glass-bg-light: rgba(255, 255, 255, 0.03);
+$glass-bg-medium: rgba(255, 255, 255, 0.05);
+$glass-bg-dark: rgba(0, 0, 0, 0.3);
+$border-light: rgba(255, 255, 255, 0.08);
+$border-medium: rgba(255, 255, 255, 0.1);
+$border-strong: rgba(255, 255, 255, 0.2);
+$border-hover: rgba(255, 255, 255, 0.3);
+$border-focus: rgba(255, 255, 255, 0.4);
+$shadow-dark: rgba(0, 0, 0, 0.3);
+$shadow-modal: rgba(0, 0, 0, 0.5);
+$shadow-white: rgba(255, 255, 255, 0.2);
+$backdrop-blur: blur(10px);
+$backdrop-blur-modal: blur(8px);
+$focus-color: rgba(255, 255, 255, 0.5);
 
+$spacing-xxs: 0.25rem;
 $spacing-xs: 0.5rem;
-$spacing-sm: 1rem;
-$spacing-md: 1.5rem;
-$spacing-lg: 2rem;
+$spacing-sm: 0.75rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.25rem;
+$spacing-xl: 1.5rem;
+$spacing-xxl: 2rem;
 
-$font-size-sm: 1rem;
-$font-size-md: 1.25rem;
-$font-size-lg: 1.5rem;
-$font-size-xl: 2.25rem;
+$font-size-xs: 0.8rem;
+$font-size-sm: 0.9rem;
+$font-size-md: 1rem;
+$font-size-lg: 1.1rem;
+$font-size-xl: clamp(1.8rem, 4vw, 2.5rem);
 
-$border-radius: 0.5rem;
-$box-shadow: 0 2px 6px rgba(0, 212, 255, 0.2);
-$animation-duration: 300ms;
+$border-radius: 8px;
+$border-radius-md: 12px;
+$border-radius-lg: 16px;
 
-$min-mobile-width: 320px;
+$animation-duration: 0.2s;
+
+$breakpoint-small: 640px;
+$breakpoint-extra-small: 480px;

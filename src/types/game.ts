@@ -1,6 +1,6 @@
 export interface Card {
   id: string;
-  value: string | number;
+  value: string;
   isFlipped: boolean;
   isMatched: boolean;
   position: number;
@@ -25,17 +25,46 @@ export interface Difficulty {
 export interface BestScore {
   moves: number;
   time: number;
-  difficulty: string;
   date: string;
 }
 
-export interface TimerState {
-  seconds: number;
-  isRunning: boolean;
-}
-
 export const DIFFICULTIES: Difficulty[] = [
-  { name: "Easy", rows: 2, cols: 2, pairs: 2 },
-  { name: "Medium", rows: 4, cols: 4, pairs: 8 },
-  { name: "Hard", rows: 6, cols: 6, pairs: 18 },
+  { name: "Easy", rows: 2, cols: 3, pairs: 3 },
+  { name: "Medium", rows: 3, cols: 4, pairs: 6 },
+  { name: "Hard", rows: 4, cols: 5, pairs: 10 },
+];
+
+export const CARD_SYMBOLS = [
+  "🎮",
+  "🎯",
+  "🎲",
+  "🎪",
+  "🎨",
+  "🎭",
+  "🎬",
+  "🎤",
+  "🎵",
+  "🎹",
+  "🎸",
+  "🎺",
+  "🎻",
+  "🎳",
+  "🎰",
+  "🃏",
+  "🎊",
+  "🎉",
+  "🎈",
+  "🎁",
+  "🎀",
+  "🎄",
+  "🎃",
+  "🎂",
+  "⭐",
+  "🌟",
+  "✨",
+  "🔥",
+  "💎",
+  "🏆",
+  "🎖️",
+  "🏅",
 ];

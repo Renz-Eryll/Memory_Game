@@ -12,23 +12,30 @@ const DifficultySelector: React.FC<DifficultySelectorProps> = ({
   setDifficulty,
 }) => {
   return (
-    <div className={styles.selector}>
-      <label htmlFor="difficulty">Difficulty:</label>
-      <select
-        id="difficulty"
-        value={currentDifficulty.name}
-        onChange={(e) => {
-          const selected = DIFFICULTIES.find((d) => d.name === e.target.value);
-          if (selected) setDifficulty(selected);
-        }}
-        aria-label="Select game difficulty"
-      >
-        {DIFFICULTIES.map((difficulty) => (
-          <option key={difficulty.name} value={difficulty.name}>
-            {difficulty.name}
-          </option>
-        ))}
-      </select>
+    <div className={styles.container}>
+      <div className={styles.selector}>
+        <label htmlFor="difficulty" className={styles.label}>
+          Difficulty
+        </label>
+        <select
+          id="difficulty"
+          value={currentDifficulty.name}
+          onChange={(e) => {
+            const selected = DIFFICULTIES.find(
+              (d) => d.name === e.target.value
+            );
+            if (selected) setDifficulty(selected);
+          }}
+          className={styles.select}
+          aria-label="Select game difficulty"
+        >
+          {DIFFICULTIES.map((difficulty) => (
+            <option key={difficulty.name} value={difficulty.name}>
+              {difficulty.name}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
   );
 };
