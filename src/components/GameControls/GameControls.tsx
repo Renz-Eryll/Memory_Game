@@ -2,11 +2,15 @@ import React from "react";
 import styles from "./GameControls.module.scss";
 import Timer from "../Timer/Timer";
 import MoveCounter from "../MoveCounter/MoveCounter";
-import { useGameContext } from "@/contexts";
 import BestScore from "../BestScore/BestScore";
+import { useGameContext } from "@/contexts";
 
-const GameControls: React.FC = () => {
-  const { resetGame, gameState } = useGameContext();
+interface GameControlsProps {
+  resetGame: () => void;
+}
+
+const GameControls: React.FC<GameControlsProps> = ({ resetGame }) => {
+  const { gameState } = useGameContext();
 
   return (
     <div className={styles.controls}>

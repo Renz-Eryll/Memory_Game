@@ -3,7 +3,7 @@ import { GameState, DIFFICULTIES, BestScore, Difficulty } from "@/types";
 import { createDeck, shuffleDeck } from "@/utils";
 import { FLIP_DELAY } from "@utils/constants";
 import { useLocalStorage } from "@hooks/useLocalStorage";
-import { useTimer } from "@hooks/useTimer";
+import useTimer from "./useTimer";
 
 export const useGameStateLogic = () => {
   const [gameState, setGameState] = useState<GameState>({
@@ -12,11 +12,11 @@ export const useGameStateLogic = () => {
     moves: 0,
     isGameComplete: false,
     isGameStarted: false,
-    difficulty: DIFFICULTIES[1], // Default to Medium
+    difficulty: DIFFICULTIES[1],
   });
 
   const { startTimer, stopTimer, resetTimer, seconds } = useTimer();
-  const [bestScore, setBestScore] = useLocalStorage<BestScore>(
+  const [bestScore, setBestScore] = useLocalStorage<BestScore | null>(
     `bestScore-${gameState.difficulty.name}`,
     null
   );
@@ -24,7 +24,6 @@ export const useGameStateLogic = () => {
   const flipTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const resetGame = useCallback(() => {
-    // Clear any existing timeout
     if (flipTimeoutRef.current) {
       clearTimeout(flipTimeoutRef.current);
       flipTimeoutRef.current = null;
@@ -43,7 +42,6 @@ export const useGameStateLogic = () => {
 
   const setDifficulty = useCallback(
     (difficulty: Difficulty) => {
-      // Clear any existing timeout
       if (flipTimeoutRef.current) {
         clearTimeout(flipTimeoutRef.current);
         flipTimeoutRef.current = null;
@@ -66,19 +64,15 @@ export const useGameStateLogic = () => {
   const flipCard = useCallback(
     (index: number) => {
       setGameState((prev) => {
-        // Can't flip if game is complete or too many cards are flipped
         if (prev.flippedCards.length >= 2 || prev.isGameComplete) {
           return prev;
         }
 
         const card = prev.cards[index];
-
-        // Can't flip if card is already flipped or matched
         if (card.isFlipped || card.isMatched) {
           return prev;
         }
 
-        // Start timer on first move
         if (!prev.isGameStarted) {
           startTimer();
         }
@@ -87,32 +81,26 @@ export const useGameStateLogic = () => {
         newCards[index] = { ...card, isFlipped: true };
         const newFlippedCards = [...prev.flippedCards, newCards[index]];
 
-        // Check if we have a pair
         if (newFlippedCards.length === 2) {
           const [first, second] = newFlippedCards;
           const isMatch = first.value === second.value;
 
           if (isMatch) {
-            // Mark cards as matched
             const firstIndex = newCards.findIndex((c) => c.id === first.id);
             const secondIndex = newCards.findIndex((c) => c.id === second.id);
 
             newCards[firstIndex] = { ...first, isMatched: true };
             newCards[secondIndex] = { ...second, isMatched: true };
 
-            // Check if game is complete
             const isGameComplete = newCards.every((card) => card.isMatched);
 
             if (isGameComplete) {
               stopTimer();
-
-              // Update best score after a short delay to get the final time
               setTimeout(() => {
-                const finalTime = seconds + 1; // Account for final second
-                const newBestScore = {
+                const finalTime = seconds + 1;
+                const newBestScore: BestScore = {
                   moves: prev.moves + 1,
                   time: finalTime,
-                  difficulty: prev.difficulty.name,
                   date: new Date().toLocaleDateString(),
                 };
 
@@ -136,7 +124,6 @@ export const useGameStateLogic = () => {
               isGameComplete,
             };
           } else {
-            // No match - flip cards back after delay
             flipTimeoutRef.current = setTimeout(() => {
               setGameState((current) => ({
                 ...current,
@@ -159,7 +146,6 @@ export const useGameStateLogic = () => {
           }
         }
 
-        // First card flipped
         return {
           ...prev,
           cards: newCards,
@@ -171,7 +157,6 @@ export const useGameStateLogic = () => {
     [startTimer, stopTimer, seconds, bestScore, setBestScore]
   );
 
-  // Initialize game on mount
   useEffect(() => {
     setGameState((prev) => ({
       ...prev,
@@ -179,7 +164,6 @@ export const useGameStateLogic = () => {
     }));
   }, []);
 
-  // Cleanup timeout on unmount
   useEffect(() => {
     return () => {
       if (flipTimeoutRef.current) {

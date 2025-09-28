@@ -44,6 +44,7 @@ const GameBoard: React.FC = () => {
             "--grid-columns": `repeat(${maxCols}, ${cardSize}px)`,
             "--grid-rows": `repeat(${gameState.difficulty.rows}, ${cardSize}px)`,
             "--grid-width": `${gridWidth}px`,
+            "--grid-height": `${gridHeight}px`,
             "--gap": `${gap}px`,
           } as React.CSSProperties
         }

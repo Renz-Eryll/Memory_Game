@@ -1,39 +1,30 @@
 import { useState, useCallback, useEffect } from "react";
-import { TimerState } from "@/types";
 
-export const useTimer = (): TimerState & {
-  startTimer: () => void;
-  stopTimer: () => void;
-  resetTimer: () => void;
-} => {
-  const [timerState, setTimerState] = useState<TimerState>({
-    seconds: 0,
-    isRunning: false,
-  });
+const useTimer = () => {
+  const [seconds, setSeconds] = useState<number>(0);
+  const [isRunning, setIsRunning] = useState<boolean>(false);
 
-  const startTimer = useCallback(() => {
-    setTimerState((prev) => ({ ...prev, isRunning: true }));
-  }, []);
-
-  const stopTimer = useCallback(() => {
-    setTimerState((prev) => ({ ...prev, isRunning: false }));
-  }, []);
-
+  const startTimer = useCallback(() => setIsRunning(true), []);
+  const stopTimer = useCallback(() => setIsRunning(false), []);
   const resetTimer = useCallback(() => {
-    setTimerState({ seconds: 0, isRunning: false });
+    setSeconds(0);
+    setIsRunning(false);
   }, []);
 
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
-    if (timerState.isRunning) {
-      interval = setInterval(() => {
-        setTimerState((prev) => ({ ...prev, seconds: prev.seconds + 1 }));
-      }, 1000);
+    if (isRunning) {
+      interval = setInterval(
+        () => setSeconds((prev: number) => prev + 1),
+        1000
+      );
     }
     return () => {
       if (interval) clearInterval(interval);
     };
-  }, [timerState.isRunning]);
+  }, [isRunning]);
 
-  return { ...timerState, startTimer, stopTimer, resetTimer };
+  return { seconds, startTimer, stopTimer, resetTimer };
 };
+
+export default useTimer;

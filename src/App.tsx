@@ -1,13 +1,10 @@
 import React from "react";
+import { useGameContext } from "@/contexts/GameContext";
 import styles from "./App.module.scss";
-import { useGameContext } from "@/contexts";
-import {
-  BestScore,
-  DifficultySelector,
-  GameBoard,
-  GameControls,
-  GameComplete,
-} from "@/components";
+import DifficultySelector from "./components/DifficultySelector/DifficultySelector";
+import GameControls from "./components/GameControls/GameControls";
+import GameBoard from "./components/GameBoard/GameBoard";
+import GameComplete from "./components/GameComplete/GameComplete";
 
 const App: React.FC = () => {
   const { gameState, setDifficulty, resetGame } = useGameContext();
@@ -23,9 +20,8 @@ const App: React.FC = () => {
           setDifficulty={setDifficulty}
         />
         <GameControls resetGame={resetGame} />
-        <BestScore difficulty={gameState.difficulty.name} />
         <GameBoard />
-        {gameState.isGameComplete && <GameComplete />}{" "}
+        {gameState.isGameComplete && <GameComplete />}
       </main>
     </div>
   );

@@ -18,6 +18,34 @@ import {
 
 const FLIP_DELAY = 1000;
 
+function useLocalStorage<T>(
+  key: string,
+  initialValue: T
+): [T, React.Dispatch<React.SetStateAction<T>>] {
+  const [storedValue, setStoredValue] = useState<T>(() => {
+    try {
+      const item = localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch {
+      return initialValue;
+    }
+  });
+
+  const setValue = useCallback(
+    (value: T | ((prev: T) => T)) => {
+      try {
+        const valueToStore =
+          value instanceof Function ? value(storedValue) : value;
+        setStoredValue(valueToStore);
+        localStorage.setItem(key, JSON.stringify(valueToStore));
+      } catch {}
+    },
+    [key, storedValue]
+  );
+
+  return [storedValue, setValue];
+}
+
 const createDeck = (difficulty: Difficulty): Card[] => {
   const totalCards = difficulty.rows * difficulty.cols;
   const pairsNeeded = totalCards / 2;
@@ -58,8 +86,8 @@ const shuffleDeck = (cards: Card[]): Card[] => {
 };
 
 const useTimer = () => {
-  const [seconds, setSeconds] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
+  const [seconds, setSeconds] = useState<number>(0);
+  const [isRunning, setIsRunning] = useState<boolean>(false);
 
   const startTimer = useCallback(() => setIsRunning(true), []);
   const stopTimer = useCallback(() => setIsRunning(false), []);
