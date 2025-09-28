@@ -1,69 +1,59 @@
-# React + TypeScript + Vite
+<p align="center">
+  <img src="./public/memory-game.png" alt="Memory Game Thumbnail" width="800"/>
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
+  <img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white"/>
+</p>
 
-Currently, two official plugins are available:
+<h1 align="center">🧠 Memory Game</h1>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<p align="center">
+  An engaging memory game built to challenge your cognitive skills. Featuring a minimalist black-and-white theme, this game combines <b>React</b> for dynamic interactivity, <b>SCSS</b> for stylish theming, and <b>Vite</b> for blazing-fast performance. It offers smooth animations and a responsive design.
+</p>
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ✨ Features
+- 🎮 Interactive memory matching gameplay
+- 🌀 Smooth card flip and fade animations
+- 🏆 Congratulatory modal with score and time stats
+- 📱 Fully responsive for mobile and desktop
+- ⚡ Fast and optimized with React + Vite
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🌐 Demo
+🔗 **Live Demo**: [Memory Game](https://memory-concentration-game.vercel.app)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## ⚡ Quick Start
+
+Follow these steps to get a local copy of the project up and running.
+
+### 1️⃣ Clone the repository
+```bash
+git clone https://github.com/Renz-Eryll/Memory_Game.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 2️⃣ Install dependencies
+```bash
+npm install
 ```
+
+### 3️⃣ Start the development server
+```bash
+npm run dev
+```
+
+Open **http://localhost:5173** in your browser to view the game 🚀
+
+---
+
+## 📧 Contact
+- **Name**: Renz Eryll Ramelo  
+- **LinkedIn**: [www.linkedin.com/in/renz-eryll-ramelo](https://www.linkedin.com/in/renz-eryll-ramelo)  
+- **GitHub**: [https://github.com/Renz-Eryll](https://github.com/Renz-Eryll)  
