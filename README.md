@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./public/memory-game.png" alt="Memory Game Thumbnail" width="800"/>
+  <img src="./public/memoryGame-thumbnail.svg" alt="Memory Game Thumbnail" width="800"/>
 </p>
 
 <p align="center">
@@ -17,6 +17,7 @@
 ---
 
 ## ✨ Features
+
 - 🎮 Interactive memory matching gameplay
 - 🌀 Smooth card flip and fade animations
 - 🏆 Congratulatory modal with score and time stats
@@ -26,6 +27,7 @@
 ---
 
 ## 🌐 Demo
+
 🔗 **Live Demo**: [Memory Game](https://memory-concentration-game.vercel.app)
 
 ---
@@ -35,16 +37,19 @@
 Follow these steps to get a local copy of the project up and running.
 
 ### 1️⃣ Clone the repository
+
 ```bash
 git clone https://github.com/Renz-Eryll/Memory_Game.git
 ```
 
 ### 2️⃣ Install dependencies
+
 ```bash
 npm install
 ```
 
 ### 3️⃣ Start the development server
+
 ```bash
 npm run dev
 ```
@@ -54,6 +59,7 @@ Open **http://localhost:5173** in your browser to view the game 🚀
 ---
 
 ## 📧 Contact
-- **Name**: Renz Eryll Ramelo  
-- **LinkedIn**: [www.linkedin.com/in/renz-eryll-ramelo](https://www.linkedin.com/in/renz-eryll-ramelo)  
-- **GitHub**: [https://github.com/Renz-Eryll](https://github.com/Renz-Eryll)  
+
+- **Name**: Renz Eryll Ramelo
+- **LinkedIn**: [www.linkedin.com/in/renz-eryll-ramelo](https://www.linkedin.com/in/renz-eryll-ramelo)
+- **GitHub**: [https://github.com/Renz-Eryll](https://github.com/Renz-Eryll)
